@@ -1,0 +1,50 @@
+[
+  {
+    "id": "chapel",
+    "name": "Chapel",
+    "text": "A small ruined chapel sits underground.",
+    "pass": {
+      "text": "You find a small offering of a pile of coins.",
+      "gold": true
+    },
+    "fail": {
+      "text": "All the candles suddenly go out and you flee the room in terror."
+    }
+  },
+  {
+    "id": "crypt",
+    "name": "Crypt",
+    "text": "Rows of stone coffins line the walls of this room.",
+    "pass": {
+      "text": "You find a small offering of gold.",
+      "gold": true
+    },
+    "fail": {
+      "text": "One of the coffins begins to open. You run."
+    }
+  },
+  {
+    "id": "dining-hall",
+    "name": "Dining Hall",
+    "text": "A long cracked wooden table sits in the middle of the room. Every chair is empty.",
+    "pass": {
+      "text": "You find gold beneath one of the plates",
+      "gold": true
+    },
+    "fail": {
+      "text": "One of the chairs slowly pulls itself away from the table as you exit the room."
+    }
+  },
+  {
+    "id": "garden",
+    "name": "Garden",
+    "text": "Plants grow beneath the stone ceiling, despite the complete lack of sunlight.",
+    "pass": {
+      "text": "You find a small silver dagger among the roots.",
+      "item": "Silver Dagger"
+    },
+    "fail": {
+      "text": "A vine moves to wrap around your foot as you flee."
+    }
+  }
+]

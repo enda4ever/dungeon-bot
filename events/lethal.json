@@ -1,0 +1,49 @@
+[
+  {
+    "id": "library",
+    "name": "Library",
+    "text": "You find yourself surrounded by shelves of ancient books.",
+    "pass": {
+      "text": "You discover a book with a few coins hidden away.",
+      "gold": true
+    },
+    "fail": {
+      "text": "You pull the wrong book and the entire shelf begins to fall. You are crushed to death under the weight."
+    }
+  },
+  {
+    "id": "bedroom",
+    "name": "Bedroom",
+    "text": "A bed sits beneath a thick layer of dust in the corner of the room.",
+    "pass": {
+      "text": "You find a ruby under the mattress.",
+      "item": "Ruby"
+    },
+    "fail": {
+      "text": "Something beneath the bed grabs your ankle and pulls you under. You are dragged away never to be seen again."
+    }
+  },
+  {
+    "id": "flooded-chamber",
+    "name": "Flooded Chamber",
+    "text": "An underground room is half-filled with dark, stagnant water.",
+    "pass": {
+      "text": "You manage to wade through without incident."
+    },
+    "fail": {
+      "text": "Something moves beneath the water. You are suddenly pulled under. Everything goes dark."
+    }
+  },
+  {
+    "id": "kitchen",
+    "name": "Kitchen",
+    "text": "Pots hang from the ceiling, and everything is covered in dust",
+    "pass": {
+      "text": "You find a coin purse under the table.",
+      "gold": true
+    },
+    "fail": {
+      "text": "You open a cupboard and a family of rats explodes out of it. They gnash and bite at you until you succumb to your wounds."
+    }
+  }
+]
