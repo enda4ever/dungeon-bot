@@ -4,7 +4,7 @@
     "name": "Chapel",
     "text": "A small ruined chapel sits underground.",
     "pass": {
-      "text": "You find a small offering of a pile of coins.",
+      "text": "You find a small offering plate with gold.",
       "gold": true
     },
     "fail": {
@@ -16,8 +16,8 @@
     "name": "Crypt",
     "text": "Rows of stone coffins line the walls of this room.",
     "pass": {
-      "text": "You find a small offering of gold.",
-      "gold": true
+      "text": "A shovel sits in the corner of the room. It seems to be stained with something red.",
+      "item": "Shovel"
     },
     "fail": {
       "text": "One of the coffins begins to open. You run."
@@ -28,8 +28,8 @@
     "name": "Dining Hall",
     "text": "A long cracked wooden table sits in the middle of the room. Every chair is empty.",
     "pass": {
-      "text": "You find gold beneath one of the plates",
-      "gold": true
+      "text": "You find a wooden fighting spoon under the table.",
+      "item": "Wooden Fighting Spoon"
     },
     "fail": {
       "text": "One of the chairs slowly pulls itself away from the table as you exit the room."
@@ -38,13 +38,73 @@
   {
     "id": "garden",
     "name": "Garden",
-    "text": "Plants grow beneath the stone ceiling, despite the complete lack of sunlight.",
+    "text": "Twisted plants somehow grow beneath the stone ceiling in this room, despite the lack of sunlight.",
     "pass": {
       "text": "You find a small silver dagger among the roots.",
       "item": "Silver Dagger"
     },
     "fail": {
       "text": "A vine moves to wrap around your foot as you flee."
+    }
+  },
+  {
+    "id": "workshop",
+    "name": "Workshop",
+    "text": "Tools and unfinished projects cover the workbenches and shelves in this room.",
+    "pass": {
+      "text": "You find a pitchfork mounted on the wall.",
+      "item": "Pitchfork"
+    },
+    "fail": {
+      "text": "You accidentally activate one of the machines as you leave the room."
+    }
+  },
+  {
+    "id": "empty-chamber",
+    "name": "Empty Chamber",
+    "text": "The room contains absolutely nothing.",
+    "pass": {
+      "text": "You search carefully and find a rusty helmet hidden beneath the floorboards.",
+      "item": "Rusty Helmet"
+    },
+    "fail": {
+      "text": "You spend far too long searching before realizing there really is nothing here. You exit the room."
+    }
+  },
+  {
+    "id": "fountain",
+    "name": "Fountain",
+    "text": "An old stone fountain filled with shimmering water sits in the centre of the room.",
+    "pass": {
+      "text": "You manage to retrieve a jester's pipe from the bottom of the fountain.",
+      "item": "Jester's Pipe"
+    },
+    "fail": {
+      "text": "Something touches your hand before you jerk it away and run off."
+    }
+  },
+  {
+    "id": "supply-room",
+    "name": "Supply Room",
+    "text": "Crates of rotten food create a horrible stench in this room.",
+    "pass": {
+      "text": "Among the spoiled supplies you find a sack of potatoes.",
+      "item": "Sack of Potatoes"
+    },
+    "fail": {
+      "text": "You projectile vomit on your way out of the room."
+    }
+  },
+  {
+    "id": "barracks",
+    "name": "Barracks",
+    "text": "Much of the supplies seem to have been cleared out long ago.",
+    "pass": {
+      "text": "A rusty claymore still hangs above the door.",
+      "item": "Rusty Claymore"
+    },
+    "fail": {
+      "text": "You don't find anything of use. You think you hear footsteps approaching."
     }
   }
 ]

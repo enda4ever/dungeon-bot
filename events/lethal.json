@@ -2,48 +2,155 @@
   {
     "id": "library",
     "name": "Library",
-    "text": "You find yourself surrounded by shelves of ancient books.",
+    "text": "You find yourself in a library surrounded by shelves of ancient books.",
     "pass": {
-      "text": "You discover a book with a few coins hidden away.",
-      "gold": true
+      "text": "You discover an ancient tome with gold hidden away.",
+      "gold": true,
+      "item": "Ancient Tome",
+      "epilogue": "{{cap .Pronouns.They}} discovered an ancient tome with gold hidden away, and followed its pages out.",
+      "where": "from {{.Room}}"
     },
     "fail": {
-      "text": "You pull the wrong book and the entire shelf begins to fall. You are crushed to death under the weight."
+      "text": "You pull the wrong book and the entire shelf begins to fall. You are crushed to death under the weight.",
+      "obituary": "{{cap .Pronouns.They}} pulled the wrong book and the entire shelf came down. {{cap .Pronouns.They}} {{.Pronouns.Was}} crushed to death under the weight.",
+      "where": "in {{.Room}}"
     }
   },
   {
     "id": "bedroom",
     "name": "Bedroom",
-    "text": "A bed sits beneath a thick layer of dust in the corner of the room.",
+    "text": "A moldy old mattress sits in the corner of the room. Some broken wooden furniture still collects dust.",
     "pass": {
-      "text": "You find a ruby under the mattress.",
-      "item": "Ruby"
+      "text": "You see a rusty knife under the mattress and pocket it.",
+      "item": "Rusty Knife",
+      "epilogue": "{{cap .Pronouns.They}} pocketed a rusty knife from under the mattress and pried the door open.",
+      "where": "from {{.Room}}"
     },
     "fail": {
-      "text": "Something beneath the bed grabs your ankle and pulls you under. You are dragged away never to be seen again."
+      "text": "Something beneath the bed grabs your ankle. You are dragged away never to be seen again.",
+      "obituary": "{{cap .Pronouns.They}} felt something beneath the bed grab {{.Pronouns.Their}} ankle, and {{.Pronouns.Was}} dragged away, never to be seen again.",
+      "where": "in {{.Room}}"
     }
   },
   {
     "id": "flooded-chamber",
     "name": "Flooded Chamber",
-    "text": "An underground room is half-filled with dark, stagnant water.",
+    "text": "An underground room is flooded with murky, stagnant water. It looks shallow enough to wade across.",
     "pass": {
-      "text": "You manage to wade through without incident."
+      "text": "You manage to wade through the foul water without incident.",
+      "epilogue": "{{cap .Pronouns.They}} waded through the foul water without incident and climbed out the other side.",
+      "where": "through {{.Room}}"
     },
     "fail": {
-      "text": "Something moves beneath the water. You are suddenly pulled under. Everything goes dark."
+      "text": "Something moves beneath the water. You are suddenly pulled under. Everything goes dark.",
+      "obituary": "{{cap .Pronouns.They}} felt something move beneath the water, and {{.Pronouns.Was}} suddenly pulled under. Everything went dark.",
+      "where": "in {{.Room}}"
     }
   },
   {
     "id": "kitchen",
     "name": "Kitchen",
-    "text": "Pots hang from the ceiling, and everything is covered in dust",
+    "text": "In this room, pots and pans hang from the ceiling, and everything is covered in a thick layer of dust.",
     "pass": {
-      "text": "You find a coin purse under the table.",
-      "gold": true
+      "text": "You find a coin purse with gold under the table.",
+      "gold": true,
+      "epilogue": "{{cap .Pronouns.They}} found a coin purse with gold under the table and slipped out through the larder.",
+      "where": "through {{.Room}}"
     },
     "fail": {
-      "text": "You open a cupboard and a family of rats explodes out of it. They gnash and bite at you until you succumb to your wounds."
+      "text": "You open a cupboard and a family of rats explodes out of it. They gnash and bite at you until you succumb to your wounds.",
+      "obituary": "{{cap .Pronouns.They}} opened a cupboard and a family of rats exploded out of it. The rats gnashed and bit until {{.Pronouns.They}} succumbed to {{.Pronouns.Their}} wounds.",
+      "where": "in {{.Room}}"
+    }
+  },
+  {
+    "id": "stairs",
+    "name": "The Stairs",
+    "text": "You don't notice the stairs. You take one step. Then there is nothing beneath your foot.",
+    "pass": {
+      "text": "You catch yourself. Phew!",
+      "epilogue": "{{cap .Pronouns.They}} caught {{.Pronouns.Them}}self just in time and climbed the rest of the way.",
+      "where": "up {{.Room}}"
+    },
+    "fail": {
+      "text": "You fall to your death. Somehow hitting every single step on the way down.",
+      "obituary": "{{cap .Pronouns.They}} fell to {{.Pronouns.Their}} death, somehow hitting every single step on the way down.",
+      "where": "on {{.Room}}"
+    }
+  },
+  {
+    "id": "ceiling-collapse",
+    "name": "Ceiling Collapse",
+    "text": "As you turn a corner, you hear a crack above you.",
+    "pass": {
+      "text": "You look up just in time to dive out of the way of the incoming rubble.",
+      "epilogue": "{{cap .Pronouns.They}} dove out of the way of the falling rubble and scrambled through the gap.",
+      "where": "from {{.Room}}"
+    },
+    "fail": {
+      "text": "You look up just in time to see the ceiling collapse. You are crushed to death under the rubble.",
+      "obituary": "{{cap .Pronouns.They}} looked up just in time to see the ceiling collapse, and {{.Pronouns.Was}} crushed to death under the rubble.",
+      "where": "in {{.Room}}"
+    }
+  },
+  {
+    "id": "floor-collapse",
+    "name": "Floor Collapse",
+    "text": "You descend further into the dungeon. The ground suddenly gives way under your feet.",
+    "pass": {
+      "text": "You leap to safety!",
+      "epilogue": "{{cap .Pronouns.They}} leapt to safety as the floor gave way.",
+      "where": "from {{.Room}}"
+    },
+    "fail": {
+      "text": "You attempt to jump to safe ground but the rest of the floor collapses around you as you fall into eternal darkness.",
+      "obituary": "{{cap .Pronouns.They}} tried to jump to safe ground, but the rest of the floor collapsed and {{.Pronouns.They}} fell into eternal darkness.",
+      "where": "in {{.Room}}"
+    }
+  },
+  {
+    "id": "flood",
+    "name": "Flood",
+    "text": "Water suddenly begins pouring into the room.",
+    "pass": {
+      "text": "You manage to stop the flow of the water and escape just in time!",
+      "epilogue": "{{cap .Pronouns.They}} stopped the flow of the water just in time and swam out.",
+      "where": "from {{.Room}}"
+    },
+    "fail": {
+      "text": "The water rises too fast. Everything goes black.",
+      "obituary": "{{cap .Pronouns.They}} couldn't stop the rising water. Everything went black.",
+      "where": "in {{.Room}}"
+    }
+  },
+  {
+    "id": "arrow-trap",
+    "name": "Arrow Trap",
+    "text": "You turn down a corridor and notice a tiny hole in the wall.",
+    "pass": {
+      "text": "You move past it carefully and manage to avoid setting off the trap.",
+      "epilogue": "{{cap .Pronouns.They}} moved carefully past the trap without setting it off.",
+      "where": "past {{.Room}}"
+    },
+    "fail": {
+      "text": "Before you realize what is going on, an arrow shoots out of the wall and pierces you in the neck.",
+      "obituary": "{{cap .Pronouns.They}} never saw the arrow that shot out of the wall and pierced {{.Pronouns.Them}} in the neck.",
+      "where": "at {{.Room}}"
+    }
+  },
+  {
+    "id": "trap-door",
+    "name": "Trap Door",
+    "text": "You walk down the hallway but something about the floor seems strange.",
+    "pass": {
+      "text": "You notice the trap door in time and hop over it before continuing down the hallway.",
+      "epilogue": "{{cap .Pronouns.They}} noticed a trap door in time and hopped over it before continuing down the hallway.",
+      "where": "over {{.Room}}"
+    },
+    "fail": {
+      "text": "You step directly onto the trap door and fall into darkness.",
+      "obituary": "{{cap .Pronouns.They}} stepped directly onto the trap door and fell into darkness.",
+      "where": "through {{.Room}}"
     }
   }
 ]
