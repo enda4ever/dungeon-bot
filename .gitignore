@@ -1,0 +1,8 @@
+.env
+state.json
+state.json.tmp
+/data/
+/dungeon-bot
+/dungeon-bot.exe
+.DS_Store
+*.test
