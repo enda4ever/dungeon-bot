@@ -123,7 +123,7 @@ Beyond the dungeon gates, the |x|umble |x|orde grows stronger.
 - {{fancy .}}{{end}}{{else}} nothing.{{end}}
 
 {{.Fallen}} {{if eq .Fallen 1}}rebel has{{else}}rebels have{{end}} crawled into darkness.
-Though their loot was lost, their courage inspires the horde.`)
+Their loot was lost, but their courage inspires the horde.`)
 
 var ThreadOpenMsg = msg("thread_open", "```"+`
 ᛝᛝᛝ 𝕪𝕠𝕦𝕣 𝕔𝕖𝕝𝕝 ᛝᛝᛝ
@@ -131,7 +131,8 @@ var ThreadOpenMsg = msg("thread_open", "```"+`
 You must escape the dungeon.
 
 A coin has been tossed down to you, which bears the mark of the |x|umble |x|orde.
-You discover an opening in the corner of your cell, and enter the secret passage...`)
+You discover an opening in the corner of your cell, and enter the secret passage...
+⠀`)
 
 var RoomMsg = msg("room", `{{.Text}}`)
 

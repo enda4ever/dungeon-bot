@@ -810,7 +810,7 @@ func TestTheHistoryPost(t *testing.T) {
 	got := render(HistoryMsg, MsgData{Escapes: 2, Fallen: 17, Pockets: []string{"14 gold", "1 Ancient Tome"}})
 	want := "Beyond the dungeon gates, the |x|umble |x|orde grows stronger.\n\n" +
 		"2 rebels have successfully escaped their four walls, and together assembled:\n- " + fancy("14 gold") + "\n- " + fancy("1 Ancient Tome") + "\n\n" +
-		"17 rebels have crawled into darkness.\nThough their loot was lost, their courage inspires the horde."
+		"17 rebels have crawled into darkness.\nTheir loot was lost, but their courage inspires the horde."
 	if !strings.HasSuffix(got, want) || !strings.Contains(got, fancy("humble stockpile")) {
 		t.Errorf("history post = %q, want it to end %q", got, want)
 	}
