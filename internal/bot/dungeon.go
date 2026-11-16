@@ -1,10 +1,14 @@
 package bot
 
 import (
+	"cmp"
 	"errors"
 	"log"
+	"maps"
 	"math/rand/v2"
 	"slices"
+	"strconv"
+	"strings"
 	"sync"
 	"text/template"
 	"time"
@@ -196,6 +200,7 @@ func (d *Dungeon) call(userID, channelID, side string) (turn, error) {
 				t.place = render(room.escapeWhere, MsgData{Room: fancy(room.title())})
 			}
 		}
+		d.record(t.escaped, r.gold, r.items)
 		delete(d.runs, userID)
 		return t, nil
 	}
@@ -211,8 +216,44 @@ func (d *Dungeon) expire(userID, threadID string) (turn, bool) {
 	if !ok || r.thread != threadID {
 		return turn{}, false
 	}
+	d.record(false, 0, nil)
 	delete(d.runs, userID)
 	return turn{thread: threadID, died: true, rooms: r.at, total: r.gold, items: slices.Clone(r.items)}, true
+}
+
+func (d *Dungeon) record(escaped bool, gold int, items []string) {
+	if !escaped {
+		d.state.Deaths++
+		d.save()
+		return
+	}
+	d.state.Escapes++
+	d.state.Gold += gold
+	if d.state.Items == nil && len(items) > 0 {
+		d.state.Items = map[string]int{}
+	}
+	for _, item := range items {
+		d.state.Items[item]++
+	}
+	d.save()
+}
+
+func (d *Dungeon) stockpile() (escapes, deaths int, pile []string) {
+	d.mu.Lock()
+	defer d.mu.Unlock()
+	if d.state.Gold > 0 {
+		pile = append(pile, strconv.Itoa(d.state.Gold)+" gold")
+	}
+	items := slices.Collect(maps.Keys(d.state.Items))
+	slices.SortFunc(items, func(a, b string) int {
+		return cmp.Or(cmp.Compare(d.state.Items[b], d.state.Items[a]), strings.Compare(a, b))
+	})
+	for _, item := range items {
+		if n := d.state.Items[item]; n > 0 {
+			pile = append(pile, strconv.Itoa(n)+" "+item)
+		}
+	}
+	return d.state.Escapes, d.state.Deaths, pile
 }
 
 func (d *Dungeon) settle(userID string) {

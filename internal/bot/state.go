@@ -14,6 +14,10 @@ type State struct {
 	CrawlerSince  map[string]time.Time `json:"crawler_since"`
 	PronounRoles  map[string]string    `json:"pronoun_roles"`
 	Paused        bool                 `json:"paused"`
+	Escapes       int                  `json:"escapes"`
+	Deaths        int                  `json:"deaths"`
+	Gold          int                  `json:"gold"`
+	Items         map[string]int       `json:"items"`
 }
 
 type Store interface {

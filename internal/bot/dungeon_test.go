@@ -2,6 +2,7 @@ package bot
 
 import (
 	"errors"
+	"slices"
 	"strconv"
 	"strings"
 	"testing"
@@ -490,7 +491,7 @@ func TestThePublicEscapePostTellsTheLastRoom(t *testing.T) {
 	escape := turn{escaped: true, cry: "Huzzah!", total: 18, items: []string{"Rusty Knife"}, epilogue: door.epilogue, place: place}
 	post := publicReport(escape, "@p", Pronouns{set: "he"})
 	want := "@p escaped over " + fancy("the trap door") + ". He noticed a trap door in time and hopped over it before continuing down the hallway. Huzzah!"
-	if !strings.Contains(post, want) || !strings.Contains(post, "Collected:") || strings.Contains(post, "@p has escaped") {
+	if !strings.Contains(post, want) || !strings.Contains(post, "Acquired for the rebellion:") || strings.Contains(post, "@p has escaped") {
 		t.Errorf("public escape post = %q, want %q and the collected loot, without the old escaped line", post, want)
 	}
 
@@ -516,7 +517,7 @@ func TestThePublicDeathPostTellsTheStoryWithPronouns(t *testing.T) {
 
 	she := publicReport(death, "@p", Pronouns{set: "she"})
 	want := "@p perished in " + fancy("the library") + ". She pulled the wrong book"
-	pockets := "Her remains were looted for:\n- " + fancy("4 gold") + "\n- " + fancy("Ruby")
+	pockets := "Lost to the guards:\n- " + fancy("4 gold") + "\n- " + fancy("Ruby")
 	if !strings.Contains(she, want) || !strings.Contains(she, "She was crushed") || !strings.HasSuffix(she, pockets) {
 		t.Errorf("public death post = %q, want %q, she/her throughout, then %q", she, want, pockets)
 	}
@@ -762,5 +763,60 @@ func TestBrokenRoomsAreRejected(t *testing.T) {
 		if _, err := LoadRooms([]byte(lethal), []byte(`[]`)); err == nil {
 			t.Errorf("%s: loaded without complaint", name)
 		}
+	}
+}
+func TestRunsAddToTheLedgerAndEscapesToTheStockpile(t *testing.T) {
+	rooms := []Room{
+		testRoom("a", false, Outcome{Text: "gold", Gold: true}),
+		testRoom("b", true, Outcome{Text: "Rope", Item: "Rope"}),
+	}
+	d := testDungeon(rooms)
+
+	for range 2 {
+		begin(t, d)
+		callCoin(t, d, "heads")
+		if got := callCoin(t, d, "heads"); !got.escaped {
+			t.Fatalf("run = %+v, want an escape", got)
+		}
+	}
+	begin(t, d)
+	callCoin(t, d, "heads")
+	if got := callCoin(t, d, "tails"); !got.died {
+		t.Fatalf("run = %+v, want a death", got)
+	}
+	begin(t, d)
+	if _, ok := d.expire("p", testThread); !ok {
+		t.Fatal("run did not time out")
+	}
+
+	escapes, deaths, pile := d.stockpile()
+	if want := []string{"2 gold", "2 Rope"}; escapes != 2 || deaths != 2 || !slices.Equal(pile, want) {
+		t.Errorf("stockpile = %d escapes, %d deaths, %q, want 2, 2 and %q without the dead run's loot", escapes, deaths, pile, want)
+	}
+	if saved := d.store.(*memStore).saved; saved == nil || saved.Escapes != 2 || saved.Deaths != 2 || saved.Gold != 2 || saved.Items["Rope"] != 2 {
+		t.Errorf("saved state = %+v, want the totals saved", saved)
+	}
+}
+
+func TestTheStockpileListsTheMostCommonItemsFirst(t *testing.T) {
+	d := NewDungeon(Config{}, nil, &memStore{}, &State{Escapes: 3, Items: map[string]int{"Shovel": 1, "Rusty Knife": 2, "Ancient Tome": 1, "Gone": 0}})
+	_, _, pile := d.stockpile()
+	if want := []string{"2 Rusty Knife", "1 Ancient Tome", "1 Shovel"}; !slices.Equal(pile, want) {
+		t.Errorf("stockpile = %q, want %q with no gold or zero counts", pile, want)
+	}
+}
+
+func TestTheHistoryPost(t *testing.T) {
+	got := render(HistoryMsg, MsgData{Escapes: 2, Fallen: 17, Pockets: []string{"14 gold", "1 Ancient Tome"}})
+	want := "Beyond the dungeon gates, the |x|umble |x|orde grows stronger.\n\n" +
+		"2 rebels have successfully escaped their four walls, and together assembled:\n- " + fancy("14 gold") + "\n- " + fancy("1 Ancient Tome") + "\n\n" +
+		"17 rebels have crawled into darkness.\nThough their loot was lost, their courage inspires the horde."
+	if !strings.HasSuffix(got, want) || !strings.Contains(got, fancy("humble stockpile")) {
+		t.Errorf("history post = %q, want it to end %q", got, want)
+	}
+
+	one := render(HistoryMsg, MsgData{Escapes: 1, Fallen: 1})
+	if !strings.Contains(one, "1 rebel has successfully escaped their four walls, and together assembled nothing.") || !strings.Contains(one, "\n1 rebel has crawled into darkness.") {
+		t.Errorf("history post = %q, want singulars and an empty stockpile", one)
 	}
 }

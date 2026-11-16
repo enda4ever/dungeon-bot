@@ -22,6 +22,11 @@ func CommandDefs() []*discordgo.ApplicationCommand {
 					Description: DescCrawl,
 					Type:        discordgo.ApplicationCommandOptionSubCommand,
 				},
+				{
+					Name:        "history",
+					Description: DescHistory,
+					Type:        discordgo.ApplicationCommandOptionSubCommand,
+				},
 			},
 		},
 		{
@@ -102,6 +107,9 @@ func (d *Dungeon) Route(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		d.flip(s, i, callerID(i), data.Name)
 	case data.Name == "dungeon" && sub == "crawl":
 		d.crawl(s, i, callerID(i))
+	case data.Name == "dungeon" && sub == "history":
+		escapes, deaths, pile := d.stockpile()
+		d.play(s, i, false, render(HistoryMsg, MsgData{Escapes: escapes, Fallen: deaths, Pockets: pile}))
 	case data.Name == "dungeon-admin":
 		d.admin(s, i, sub, opts)
 	}

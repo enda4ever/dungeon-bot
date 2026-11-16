@@ -31,6 +31,8 @@ type MsgData struct {
 	Lines    string
 	Place    string
 	Pockets  []string
+	Escapes  int
+	Fallen   int
 }
 
 var templateFuncs = template.FuncMap{"cap": capFirst, "fancy": fancy}
@@ -111,6 +113,17 @@ var DiedHeaderMsg = msg("died_header", "```"+`
 var EscapedHeaderMsg = msg("escaped_header", "```"+`
 ᛝᛝᛝ 𝕕𝕦𝕟𝕘𝕖𝕠𝕟 𝕓𝕣𝕖𝕒𝕜 ᛝᛝᛝ
 `+"```")
+
+var HistoryMsg = msg("history", "```"+`
+ᛝᛝᛝ 𝕙𝕦𝕞𝕓𝕝𝕖 𝕤𝕥𝕠𝕔𝕜𝕡𝕚𝕝𝕖 ᛝᛝᛝ
+`+"```"+`
+Beyond the dungeon gates, the |x|umble |x|orde grows stronger.
+
+{{.Escapes}} {{if eq .Escapes 1}}rebel has{{else}}rebels have{{end}} successfully escaped their four walls, and together assembled{{if .Pockets}}:{{range .Pockets}}
+- {{fancy .}}{{end}}{{else}} nothing.{{end}}
+
+{{.Fallen}} {{if eq .Fallen 1}}rebel has{{else}}rebels have{{end}} crawled into darkness.
+Though their loot was lost, their courage inspires the horde.`)
 
 var ThreadOpenMsg = msg("thread_open", "```"+`
 ᛝᛝᛝ 𝕪𝕠𝕦𝕣 𝕔𝕖𝕝𝕝 ᛝᛝᛝ
@@ -248,7 +261,7 @@ var DroppedMsg = msg("dropped", `{{if or .Gold .Items}}Dropped:{{if .Gold}}
 Gold: {{fancy .Gold}}{{end}}{{if .Items}}
 Items: {{fancy .Items}}{{end}}{{end}}`)
 
-var PocketsMsg = msg("pockets", `{{if .Pockets}}{{cap .Pronouns.Their}} remains were looted for:{{range .Pockets}}
+var PocketsMsg = msg("pockets", `{{if .Pockets}}Lost to the guards:{{range .Pockets}}
 - {{fancy .}}{{end}}{{else}}{{cap .Pronouns.They}} died with dust in {{.Pronouns.Their}} pockets.{{end}}`)
 
 var ObituaryMsg = msg("obituary", `{{.Player}} perished{{if .Place}} {{.Place}}{{end}}. {{.Text}}`)
@@ -257,7 +270,7 @@ var PublicEscapedMsg = msg("public_escaped", `The |x|umble |x|orde grows stronge
 
 var EpilogueMsg = msg("epilogue", `{{.Player}} escaped{{if .Place}} {{.Place}}{{end}}. {{.Text}} {{.Cry}}`)
 
-var CollectedMsg = msg("collected", `{{if or .Gold .Items}}Collected:{{if .Gold}}
+var CollectedMsg = msg("collected", `{{if or .Gold .Items}}Acquired for the rebellion:{{if .Gold}}
 Gold: {{fancy .Gold}}{{end}}{{if .Items}}
 Items: {{fancy .Items}}{{end}}{{end}}`)
 
@@ -300,6 +313,7 @@ var PronounsClearedMsg = msg("pronouns_cleared", `Pronoun roles forgotten. Every
 var (
 	DescDungeon          = "Commands for Dungeon Bot"
 	DescCrawl            = "Descend into the dungeon, if you so dare!"
+	DescHistory          = "Behold the humble stockpile"
 	DescHeads            = "Flip the humble coin and call heads"
 	DescTails            = "Flip the humble coin and call tails"
 	DescDungeonAdmin     = "Run the dungeon (admin)"
