@@ -273,7 +273,7 @@ func roomPrompt(room Room, player string) string {
 		title = UntitledRoomMsg
 	}
 	data := MsgData{Player: player, Room: room.Name, Text: room.Text}
-	return join("\n", render(title, data), render(RoomMsg, data), render(CallMsg, data))
+	return join("\n\n", join("\n", render(title, data), render(RoomMsg, data)), render(CallMsg, data))
 }
 
 func flipSteps(t turn, player string) []string {
