@@ -53,8 +53,9 @@ coin flip, right call passes            │
 | escaped | user has escaped the dungeon. the \|x\|umble \|x\|orde grows stronger |
 | loot found | You collect: (gold and items) |
 | user's spoils | escaped: "@user escaped the dungeon with:" Gold, Items (or just "escaped the dungeon."). died: "Dropped:" Gold, Items, only if anything was gathered. Gold and Items lines are each left out when empty, here and in the public posts |
-| public death post | @user perished + the lethal room's `where` (e.g. "in {{.Room}}", filled with the room's header text in the header font) + its third-person `obituary` with pronouns, then "<Their> remains were looted for:" and a bulleted list of gold and items, or "<They> died with dust in <their> pockets." if nothing was gathered. A timeout says just "@user perished." + the timeout line |
-| public escape post | \|x\|umble \|x\|orde grows stronger, then @user escaped + the last (lethal) room's pass `where` (e.g. "over {{.Room}}") + its third-person `epilogue` with pronouns + their pass word, then Collected: Gold, Items |
+| public death post | @user perished + the lethal room's `where` (e.g. "in {{.Room}}", filled with the room's header text in the header font) + its third-person `obituary` with pronouns, then "Lost to the guards:" and a bulleted list of gold and items, or "<They> died with dust in <their> pockets." if nothing was gathered. A timeout says just "@user perished." + the timeout line |
+| public escape post | \|x\|umble \|x\|orde grows stronger, then @user escaped + the last (lethal) room's pass `where` (e.g. "over {{.Room}}") + its third-person `epilogue` with pronouns + their pass word, then "Acquired for the rebellion:" Gold, Items |
+| `/dungeon history` | humble stockpile header, the escape total, a bulleted list of all gold and items carried out by escapees (most common first), then the death total (timeouts count). Loot from deaths isn't counted. Public, any channel |
 
 -----
 
@@ -82,7 +83,7 @@ On startup the bot deletes any dungeon threads left in that channel, e.g. from a
 
 If the server has pronoun roles, `/dungeon-admin pronouns` tells the bot which is which, the same as Goat Bot's. Anyone without one is they/them, and somebody with several, or a combo role like they/she, gets one picked at random each time. `/dungeon-admin clear-pronouns` forgets them all.
 
-The dungeon channel, pronoun roles, the pause, and when each current 𝔇𝔲𝔫𝔤𝔢𝔬𝔫 ℭ𝔯𝔞𝔴𝔩𝔢𝔯 earned the role (their user ID and time) are saved in `./data`, so they survive `make up`.
+The dungeon channel, pronoun roles, the pause, and when each current 𝔇𝔲𝔫𝔤𝔢𝔬𝔫 ℭ𝔯𝔞𝔴𝔩𝔢𝔯 earned the role (their user ID and time), the all-time escape and death totals, and the stockpile of escaped loot are saved in `./data`, so they survive `make up`.
 
 The rooms are built into the bot, so `make up` again after editing them.
 
@@ -93,6 +94,7 @@ To roll out changes without cutting anyone's run short: `/dungeon-admin pause`, 
 #### COMMANDS:
 ```txt
 /dungeon crawl          enter / find thread
+/dungeon history        the humble stockpile
 /heads                  call heads
 /tails                  call tails
 /dungeon-admin channel  set dungeon channel

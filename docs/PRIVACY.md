@@ -7,7 +7,7 @@ Last updated: 15 November 2026
 #### What identifying data is stored:
 If you escape the dungeon and earn the 𝔇𝔲𝔫𝔤𝔢𝔬𝔫 ℭ𝔯𝔞𝔴𝔩𝔢𝔯 role, your Discord user ID is stored along with the time you escaped. The bot needs this to take the role back after 24 hours. That is all.
 
-Your runs themselves are not saved. The rooms you went through, your calls, and the gold and items you found only exist while the run is going, and are gone once it ends. The private thread for your run is deleted when the run ends.
+Your runs themselves are not saved. The rooms you went through and your calls only exist while the run is going, and are gone once it ends. The private thread for your run is deleted when the run ends. The bot does keep server-wide totals: how many runs ended in escape or death, and the gold and items escapees carried out. These are counts only and hold no user IDs.
 
 A user ID is a public identifying number that Discord gives you when you sign up. It never changes, and anybody holding one can look up whose profile it belongs to. So this isn't anonymous data. Any bot which needs to give out "roles" to users needs access to their corresponding user IDs.
 
