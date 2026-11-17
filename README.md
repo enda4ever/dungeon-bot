@@ -87,7 +87,7 @@ The dungeon channel, pronoun roles, the pause, and when each current 𝔇𝔲�
 
 The rooms are built into the bot, so `make up` again after editing them.
 
-To roll out changes without cutting anyone's run short: `/dungeon-admin pause`, run it again until it reports 0 runs in progress (at most 5 minutes), `make up`, then `/dungeon-admin unpause`. The pause is saved, so the restart doesn't reopen the dungeon.
+To roll out changes without cutting anyone's run short: `/dungeon-admin pause`, run it again until it reports 0 runs in progress (at most 5 minutes), `make backup`, `make up`, then `/dungeon-admin unpause`. The pause is saved, so the restart doesn't reopen the dungeon. `make backup` copies `data/state.json` to a timestamped file in `backups/`; to restore one, `make down`, copy it back over `data/state.json`, `make up`.
 
 -----
 
