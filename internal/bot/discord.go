@@ -1,11 +1,21 @@
 package bot
 
 import (
+	"errors"
 	"log"
+	"net/url"
 	"time"
 
 	"github.com/bwmarrin/discordgo"
 )
+
+func withoutURL(err error) error {
+	var u *url.Error
+	if errors.As(err, &u) {
+		return u.Err
+	}
+	return err
+}
 
 func reply(s *discordgo.Session, i *discordgo.InteractionCreate, body string, private bool) error {
 	data := &discordgo.InteractionResponseData{

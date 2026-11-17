@@ -15,9 +15,6 @@ A user ID is a public identifying number that Discord gives you when you sign up
 
 #### How long this data is stored:
 Only while you hold the role. Your user ID and escape time are deleted as soon as the role is taken away, which happens when a later run of yours ends in death, or 24 hours after your latest escape, whichever comes first.
-
-If something goes wrong on Discord's side, the bot may write your user ID into its own error log, for whoever runs the bot to troubleshoot with.
-
 -----
 
 #### Where the data is stored:

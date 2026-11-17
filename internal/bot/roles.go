@@ -103,7 +103,7 @@ func (d *Dungeon) grantDestroyer(dg guildRoles, userID string) {
 		return
 	}
 	if err := dg.GuildMemberRoleAdd(d.cfg.GuildID, userID, roleID); err != nil {
-		log.Printf("discord: could not give the %s role to %s: %v", destroyerRoleName, userID, err)
+		log.Printf("discord: could not give the %s role: %v", destroyerRoleName, withoutURL(err))
 	}
 }
 
@@ -115,14 +115,14 @@ func (d *Dungeon) updateCrawlerRole(dg guildRoles, userID string, escaped bool) 
 	}
 	if escaped {
 		if err := dg.GuildMemberRoleAdd(d.cfg.GuildID, userID, roleID); err != nil {
-			log.Printf("discord: could not give the %s role to %s: %v", crawlerRoleName, userID, err)
+			log.Printf("discord: could not give the %s role: %v", crawlerRoleName, withoutURL(err))
 			return
 		}
 		d.markCrawler(userID, d.now())
 		return
 	}
 	if err := dg.GuildMemberRoleRemove(d.cfg.GuildID, userID, roleID); err != nil && !isNotFound(err) {
-		log.Printf("discord: could not take the %s role from %s: %v", crawlerRoleName, userID, err)
+		log.Printf("discord: could not take the %s role: %v", crawlerRoleName, withoutURL(err))
 		return
 	}
 	d.clearCrawler(userID)

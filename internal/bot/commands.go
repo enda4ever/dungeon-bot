@@ -131,14 +131,14 @@ func (d *Dungeon) crawl(s *discordgo.Session, i *discordgo.InteractionCreate, us
 		return
 	}
 	if err := deferPublic(s, i); err != nil {
-		log.Printf("discord: could not acknowledge crawl for %s: %v", userID, err)
+		log.Printf("discord: could not acknowledge crawl: %v", withoutURL(err))
 		d.leave(userID)
 		return
 	}
 
 	thread, err := openThread(s, i.ChannelID, userID, render(ThreadNameMsg, MsgData{Name: displayName(i)}))
 	if err != nil {
-		log.Printf("discord: could not open a thread for %s: %v", userID, err)
+		log.Printf("discord: could not open a thread: %v", withoutURL(err))
 		d.leave(userID)
 		if err := s.InteractionResponseDelete(i.Interaction); err != nil {
 			log.Printf("discord: could not withdraw the entry message: %v", err)
