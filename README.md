@@ -3,7 +3,7 @@
 This is a discord bot. It's about a dungeon crawl.
 
 NOTE: This program's output mentions "The Humble Horde" which is the name of a fictional group from [Netherwilds](https://wiki.netherwilds.com/index.php/Main_Page) lore.
-I do not own the rights to this lore. This is a non-commercial, fan project. I was asked to make a bot for the artist's official discord. 
+I do not own the rights to this lore. This is a non-commercial, passion project. I was asked to make a bot for the artist's official discord. 
 
 -----
 
