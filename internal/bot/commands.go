@@ -300,23 +300,24 @@ func report(t turn, player string) string {
 
 func publicReport(t turn, player string, pronouns Pronouns) string {
 	data := MsgData{Player: player, Gold: t.total, Items: strings.Join(t.items, ", ")}
+	pockets := slices.Clone(t.items)
+	if t.total > 0 {
+		pockets = slices.Insert(pockets, 0, strconv.Itoa(t.total)+" gold")
+	}
 	if t.escaped {
 		var story string
 		if t.epilogue != nil {
 			text := withItem(withGold(render(t.epilogue, MsgData{Pronouns: pronouns}), t.gold), t.item)
 			story = render(EpilogueMsg, MsgData{Player: player, Place: t.place, Text: text, Cry: t.cry})
 		}
-		return join("\n", render(EscapedHeaderMsg, data), join("\n\n", render(PublicEscapedMsg, data), story, render(CollectedMsg, data)))
+		collected := render(CollectedMsg, MsgData{Pockets: pockets})
+		return join("\n", render(EscapedHeaderMsg, data), join("\n\n", render(PublicEscapedMsg, data), story, collected))
 	}
 	obit := t.obituary
 	if obit == nil {
 		obit = TimeoutObituaryMsg
 	}
 	death := render(ObituaryMsg, MsgData{Player: player, Place: t.place, Text: render(obit, MsgData{Pronouns: pronouns})})
-	pockets := slices.Clone(t.items)
-	if t.total > 0 {
-		pockets = slices.Insert(pockets, 0, strconv.Itoa(t.total)+" gold")
-	}
 	dropped := render(PocketsMsg, MsgData{Pronouns: pronouns, Pockets: pockets})
 	return join("\n", render(DiedHeaderMsg, data), join("\n\n", render(DiedMsg, data), death, dropped))
 }

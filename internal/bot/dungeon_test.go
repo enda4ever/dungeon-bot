@@ -491,7 +491,7 @@ func TestThePublicEscapePostTellsTheLastRoom(t *testing.T) {
 	escape := turn{escaped: true, cry: "Huzzah!", total: 18, items: []string{"Rusty Knife"}, epilogue: door.epilogue, place: place}
 	post := publicReport(escape, "@p", Pronouns{set: "he"})
 	want := "@p escaped over " + fancy("the trap door") + ". He noticed a trap door in time and hopped over it before continuing down the hallway. Huzzah!"
-	if !strings.Contains(post, want) || !strings.Contains(post, "Acquired for the rebellion:") || strings.Contains(post, "@p has escaped") {
+	if !strings.Contains(post, want) || !strings.HasSuffix(post, "Acquired for the rebellion:\n- "+fancy("18 gold")+"\n- "+fancy("Rusty Knife")) || strings.Contains(post, "@p has escaped") {
 		t.Errorf("public escape post = %q, want %q and the collected loot, without the old escaped line", post, want)
 	}
 

@@ -54,7 +54,7 @@ coin flip, right call passes            │
 | loot found | You collect: (gold and items) |
 | user's spoils | escaped: "@user escaped the dungeon with:" Gold, Items (or just "escaped the dungeon."). died: "Dropped:" Gold, Items, only if anything was gathered. Gold and Items lines are each left out when empty, here and in the public posts |
 | public death post | @user perished + the lethal room's `where` (e.g. "in {{.Room}}", filled with the room's header text in the header font) + its third-person `obituary` with pronouns, then "Lost to the guards:" and a bulleted list of gold and items, or "<They> died with dust in <their> pockets." if nothing was gathered. A timeout says just "@user perished." + the timeout line |
-| public escape post | \|x\|umble \|x\|orde grows stronger, then @user escaped + the last (lethal) room's pass `where` (e.g. "over {{.Room}}") + its third-person `epilogue` with pronouns + their pass word, then "Acquired for the rebellion:" Gold, Items |
+| public escape post | \|x\|umble \|x\|orde grows stronger, then @user escaped + the last (lethal) room's pass `where` (e.g. "over {{.Room}}") + its third-person `epilogue` with pronouns + their pass word, then "Acquired for the rebellion:" and a bulleted list of gold and items, left out if nothing was gathered |
 | `/dungeon history` | humble stockpile header, the escape total, a bulleted list of all gold and items carried out by escapees (most common first), then the death total (timeouts count). Loot from deaths isn't counted. Public, any channel |
 
 -----

@@ -271,9 +271,8 @@ var PublicEscapedMsg = msg("public_escaped", `The |x|umble |x|orde grows stronge
 
 var EpilogueMsg = msg("epilogue", `{{.Player}} escaped{{if .Place}} {{.Place}}{{end}}. {{.Text}} {{.Cry}}`)
 
-var CollectedMsg = msg("collected", `{{if or .Gold .Items}}Acquired for the rebellion:{{if .Gold}}
-Gold: {{fancy .Gold}}{{end}}{{if .Items}}
-Items: {{fancy .Items}}{{end}}{{end}}`)
+var CollectedMsg = msg("collected", `{{if .Pockets}}Acquired for the rebellion:{{range .Pockets}}
+- {{fancy .}}{{end}}{{end}}`)
 
 var TimeoutObituaryMsg = msg("timeout_obituary", `{{cap .Pronouns.They}} lingered in the dungeon too long.`)
 
