@@ -7,12 +7,12 @@
       "text": "You discover an ancient tome with gold hidden away.",
       "gold": true,
       "item": "Ancient Tome",
-      "epilogue": "{{cap .Pronouns.They}} discovered an ancient tome with gold hidden away, and followed its pages out.",
+      "epilogue": "{{cap .Pronouns.They}} discovered an ancient tome with gold hidden away.",
       "where": "from {{.Room}}"
     },
     "fail": {
       "text": "You pull the wrong book and the entire shelf begins to fall. You are crushed to death under the weight.",
-      "obituary": "{{cap .Pronouns.They}} pulled the wrong book and the entire shelf came down. {{cap .Pronouns.They}} {{.Pronouns.Was}} crushed to death under the weight.",
+      "obituary": "{{cap .Pronouns.They}} pulled the wrong book and the entire shelf began to fall. {{cap .Pronouns.They}} {{.Pronouns.Was}} crushed to death under the weight.",
       "where": "in {{.Room}}"
     }
   },
@@ -23,12 +23,12 @@
     "pass": {
       "text": "You see a rusty knife under the mattress and pocket it.",
       "item": "Rusty Knife",
-      "epilogue": "{{cap .Pronouns.They}} pocketed a rusty knife from under the mattress and pried the door open.",
+      "epilogue": "{{cap .Pronouns.They}} saw a rusty knife under the mattress and pocketed it.",
       "where": "from {{.Room}}"
     },
     "fail": {
       "text": "Something beneath the bed grabs your ankle. You are dragged away never to be seen again.",
-      "obituary": "{{cap .Pronouns.They}} felt something beneath the bed grab {{.Pronouns.Their}} ankle, and {{.Pronouns.Was}} dragged away, never to be seen again.",
+      "obituary": "Something beneath the bed grabbed {{.Pronouns.Their}} ankle. {{cap .Pronouns.They}} {{.Pronouns.Was}} dragged away, never to be seen again.",
       "where": "in {{.Room}}"
     }
   },
@@ -38,12 +38,12 @@
     "text": "An underground room is flooded with murky, stagnant water. It looks shallow enough to wade across.",
     "pass": {
       "text": "You manage to wade through the foul water without incident.",
-      "epilogue": "{{cap .Pronouns.They}} waded through the foul water without incident and climbed out the other side.",
+      "epilogue": "{{cap .Pronouns.They}} managed to wade through the foul water without incident.",
       "where": "through {{.Room}}"
     },
     "fail": {
       "text": "Something moves beneath the water. You are suddenly pulled under. Everything goes dark.",
-      "obituary": "{{cap .Pronouns.They}} felt something move beneath the water, and {{.Pronouns.Was}} suddenly pulled under. Everything went dark.",
+      "obituary": "Something moved beneath the water. {{cap .Pronouns.They}} {{.Pronouns.Was}} suddenly pulled under. Everything went dark.",
       "where": "in {{.Room}}"
     }
   },
@@ -54,7 +54,7 @@
     "pass": {
       "text": "You find a coin purse with gold under the table.",
       "gold": true,
-      "epilogue": "{{cap .Pronouns.They}} found a coin purse with gold under the table and slipped out through the larder.",
+      "epilogue": "{{cap .Pronouns.They}} found a coin purse with gold under the table.",
       "where": "through {{.Room}}"
     },
     "fail": {
@@ -69,7 +69,7 @@
     "text": "You don't notice the stairs. You take one step. Then there is nothing beneath your foot.",
     "pass": {
       "text": "You catch yourself. Phew!",
-      "epilogue": "{{cap .Pronouns.They}} caught {{.Pronouns.Them}}self just in time and climbed the rest of the way.",
+      "epilogue": "{{cap .Pronouns.They}} caught {{.Pronouns.Them}}self. Phew!",
       "where": "up {{.Room}}"
     },
     "fail": {
@@ -84,12 +84,12 @@
     "text": "As you turn a corner, you hear a crack above you.",
     "pass": {
       "text": "You look up just in time to dive out of the way of the incoming rubble.",
-      "epilogue": "{{cap .Pronouns.They}} dove out of the way of the falling rubble and scrambled through the gap.",
+      "epilogue": "{{cap .Pronouns.They}} looked up just in time to dive out of the way of the incoming rubble.",
       "where": "from {{.Room}}"
     },
     "fail": {
       "text": "You look up just in time to see the ceiling collapse. You are crushed to death under the rubble.",
-      "obituary": "{{cap .Pronouns.They}} looked up just in time to see the ceiling collapse, and {{.Pronouns.Was}} crushed to death under the rubble.",
+      "obituary": "{{cap .Pronouns.They}} looked up just in time to see the ceiling collapse. {{cap .Pronouns.They}} {{.Pronouns.Was}} crushed to death under the rubble.",
       "where": "in {{.Room}}"
     }
   },
@@ -99,12 +99,12 @@
     "text": "You descend further into the dungeon. The ground suddenly gives way under your feet.",
     "pass": {
       "text": "You leap to safety!",
-      "epilogue": "{{cap .Pronouns.They}} leapt to safety as the floor gave way.",
+      "epilogue": "{{cap .Pronouns.They}} leapt to safety!",
       "where": "from {{.Room}}"
     },
     "fail": {
       "text": "You attempt to jump to safe ground but the rest of the floor collapses around you as you fall into eternal darkness.",
-      "obituary": "{{cap .Pronouns.They}} tried to jump to safe ground, but the rest of the floor collapsed and {{.Pronouns.They}} fell into eternal darkness.",
+      "obituary": "{{cap .Pronouns.They}} attempted to jump to safe ground, but the rest of the floor collapsed around {{.Pronouns.Them}} as {{.Pronouns.They}} fell into eternal darkness.",
       "where": "in {{.Room}}"
     }
   },
@@ -114,12 +114,12 @@
     "text": "Water suddenly begins pouring into the room.",
     "pass": {
       "text": "You manage to stop the flow of the water and escape just in time!",
-      "epilogue": "{{cap .Pronouns.They}} stopped the flow of the water just in time and swam out.",
+      "epilogue": "{{cap .Pronouns.They}} managed to stop the flow of the water and escape just in time!",
       "where": "from {{.Room}}"
     },
     "fail": {
       "text": "The water rises too fast. Everything goes black.",
-      "obituary": "{{cap .Pronouns.They}} couldn't stop the rising water. Everything went black.",
+      "obituary": "The water rose too fast. Everything went black.",
       "where": "in {{.Room}}"
     }
   },
@@ -129,12 +129,12 @@
     "text": "You turn down a corridor and notice a tiny hole in the wall.",
     "pass": {
       "text": "You move past it carefully and manage to avoid setting off the trap.",
-      "epilogue": "{{cap .Pronouns.They}} moved carefully past the trap without setting it off.",
+      "epilogue": "{{cap .Pronouns.They}} moved past the trap carefully and managed to avoid setting it off.",
       "where": "past {{.Room}}"
     },
     "fail": {
       "text": "Before you realize what is going on, an arrow shoots out of the wall and pierces you in the neck.",
-      "obituary": "{{cap .Pronouns.They}} never saw the arrow that shot out of the wall and pierced {{.Pronouns.Them}} in the neck.",
+      "obituary": "Before {{.Pronouns.They}} realized what was going on, an arrow shot out of the wall and pierced {{.Pronouns.Them}} in the neck.",
       "where": "at {{.Room}}"
     }
   },
